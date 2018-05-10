@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "البحث عن صنف";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="icon-magnifier"></i>
+                <a href="#">
+                    البحث و الاستعلام
+                </a>
+                <i class="fa fa-angle-left"></i>
+            </li>
+            <li>
+                <a href="#">
+                    الإستعلام عن صنف
+                </a>
+            </li>
+
+        </ul>
+        
+    </div>
+</div>
+<div class="row" ng-controller="ProductSearchCtrl">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    خيارات البحث
+                </div>
+                <div class="actions">
+                    <a href="" class="btn btn-default" ng-click="emptyInputs()">
+                        <i class="fa fa-pencil"></i> إخلاء خانات البحث
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form role='form'>
+                    <div class='row form-body'>
+                        <div class='col-md-4 form-group'>
+                            <label>اسم الصنف</label>
+                            <div class='form-group'>
+                                <input ng-model="Srch_Product.Product_Name" type='text' id="NO" class='form-control' placeholder='رقم الصادر' >
+                            </div>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label class="control-label">السعر من </label>
+                            <input ng-model="Srch_Product.Price_From" numbersOnly type="number" name="DatBegin" id="DatBegin" value=""  class="form-control" placeholder="الفترة من" />
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label class="control-label">إلي</label>
+                            <input ng-model="Srch_Product.Price_To"  numbersOnly type="number" name="DatEnd" id="DatEnd" value="" class="form-control" placeholder="إلي" />
+                        </div>
+                        <div class='col-md-4 form-group'>
+                            <label>اسم الشركة</label>
+                            <div class='form-group'>
+                                <input type='hidden' id="Company_Id" ng-model="Srch_Product.Company_Id">
+                                <input type='text' id="Company_Name" ng-click="loadCompanies()" placeholder='اسم الشركة' class='form-control' readonly>
+                            </div>
+                        </div>
+                        <div class='col-md-4 form-group'>
+                            <label>القسم</label>
+                            <div class='form-group'>
+                                <input type='hidden' id="Department_Id" ng-model="Srch_Product.Department_Id">
+                                <input type='text' id="Department_Name" ng-click="loadCompanies()" placeholder='اسم الشركة' class='form-control' readonly>
+                            </div>
+                        </div>
+                     
+                        <div class="col-md-2 form-group">
+                            <label class="control-label">رقم الباركود من </label>
+                            <input ng-model="Srch_Product.Barcode_From" type="text" name="DatBegin" id="DatBegin" value=""  class="form-control" placeholder="الفترة من" />
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label class="control-label">إلي</label>
+                            <input ng-model="Srch_Product.Barcode_To" type="text" name="DatEnd" id="DatEnd" value=""  class="form-control" placeholder="إلي" />
+                        </div>
+                        <div class='col-md-4 form-group'>
+                            <label>ضريبة القيمة المضافة</label>
+                            <div class='form-group fixeddiv'>
+                                <select id="Taxes" class="form-control">
+                                    <option value="" ng-selected="Srch_Product.Taxes == ''"> اختار القيمة المضافة</option>
+                                    <option value="0" ng-selected="Srch_Product.Taxes == 0">0</option>
+                                    <option value="5" ng-selected="Srch_Product.Taxes == 5">5</option>
+                                </select>
+                                <label class="label2">%</label>
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row form-actions" style="text-align:center">
+                        <button type="submit" class="btn green" ng-click="SearchButton()">بحث</button>
+                    </div>
+                </form>
+            </div>
+            <div class="portlet-title">
+                <div class="caption">
+                    نتائج البحث
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> اسم الصنف </th>
+                                <th>اسم الشركة</th>
+                                <th>القسم</th>
+                                <th>رقم الباركود</th>
+                                <th title="باركود الكارتون">باركود الكارتون</th>
+                                <th title="العدد بالكارتون">العدد بالكارتون</th>
+                               
+                                <th title="سعر الشراء"> سعر الشراء </th>
+                                <th title="سعر الصنف"> سعر الصنف </th>
+                                <th>الضريبة</th>
+                                <th>قيمة الضريبة</th>
+                                <th title="سعر البيع مع الضريبة">سعر البيع </th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in data track by $index" ng-dblclick="CallEditPage(item)">
+                                <td> {{item.Name}} </td>
+                                <td>{{item.Company_Name}} </td>
+                                <td> {{item.Department_Name}} </td>
+                                <td> {{item.Barcode}} </td>
+                                <td> {{item.Carton_Barcode}} </td>
+                                <td> {{item.Carton_ProCount}} </td>
+                                <td>{{item.Price_Mowrid}} </td>
+                                <td>{{item.Price_Unit}} </td>
+                                <td> {{item.Taxes}} </td>
+                                <td> {{item.Taxes_Price}} </td>
+                                <td>{{item.TotalPrice}} </td>
+                              
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: center;" ng-show="TableLoading">
+                        <img src="~/assets/layouts/img/Preloader_2.gif" />
+                        <img src="~/assets/layouts/img/Preloader_2.gif" />
+                    </div>
+                    <div ng-show="EndSearch" style="text-align: center; color:red;"> عفوا لا توجد بيانات آخري </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Related{
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="page-title">الأدوات</h4>
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption" style="font-size:14px;">
+                        روابط ذات صلة
+                    </div>
+                </div>
+                <div>
+                    <div class="portlet-body">
+                        <a href="/Search/Invoice_Mowarid"><i class="fa fa-angle-left"></i> الإستعلام عن عملية شراء</a>
+                    </div>
+                    <div class="portlet-body">
+                        <a href="/Search/Moshtary"><i class="fa fa-angle-left"></i> الإستعلام عن مشترى</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+@section OmarRezkAngularFiles{
+    <script src="~/App/Search/ProductSearchCtrl.js"></script>
+}

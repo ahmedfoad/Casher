@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CasherArchiveModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="IMAGES_EXPORT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EXPORTID" Type="number" Precision="38" Scale="0" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="PICTURE" Type="blob" />
+          <Property Name="UPLOADID" Type="varchar2" MaxLength="100" />
+          <Property Name="ACTIVE" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="IMAGES_IMPORT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="IMPORTID" Type="number" Precision="38" Scale="0" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="PICTURE" Type="blob" />
+          <Property Name="ACTIVE" Type="number" Precision="38" Scale="0" />
+          <Property Name="UPLOADID" Type="varchar2" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="CasherArchiveModelStoreContainer">
+          <EntitySet Name="IMAGES_EXPORT" EntityType="Self.IMAGES_EXPORT" Schema="Casher_IMAGES" store:Type="Tables" />
+          <EntitySet Name="IMAGES_IMPORT" EntityType="Self.IMAGES_IMPORT" Schema="Casher_IMAGES" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CasherArchiveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="IMAGES_EXPORT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="EXPORTID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PICTURE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="UPLOADID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVE" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityContainer Name="CasherArchiveEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IMAGES_EXPORT" EntityType="Self.IMAGES_EXPORT" />
+          <EntitySet Name="IMAGES_IMPORT" EntityType="CasherArchiveModel.IMAGES_IMPORT" />
+        </EntityContainer>
+        <EntityType Name="IMAGES_IMPORT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="IMPORTID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PICTURE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ACTIVE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="UPLOADID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CasherArchiveModelStoreContainer" CdmEntityContainer="CasherArchiveEntities">
+          <EntitySetMapping Name="IMAGES_EXPORT">
+            <EntityTypeMapping TypeName="CasherArchiveModel.IMAGES_EXPORT">
+              <MappingFragment StoreEntitySet="IMAGES_EXPORT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EXPORTID" ColumnName="EXPORTID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
+                <ScalarProperty Name="UPLOADID" ColumnName="UPLOADID" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGES_IMPORT">
+            <EntityTypeMapping TypeName="CasherArchiveModel.IMAGES_IMPORT">
+              <MappingFragment StoreEntitySet="IMAGES_IMPORT">
+                <ScalarProperty Name="UPLOADID" ColumnName="UPLOADID" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="IMPORTID" ColumnName="IMPORTID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "البحث عن عملية شراء";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="icon-magnifier"></i>
+                <a href="#">
+                    البحث و الاستعلام
+                </a>
+                <i class="fa fa-angle-left"></i>
+            </li>
+            <li>
+                <a href="#">
+                    البحث عن عملية شراء
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="row" ng-controller="Expire_ProductCtrl">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    الفواتير منتهية الصلاحية
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;"> رقم الفاتورة </th>
+                                <th style="width: 30%;"> اسم المورد </th>
+                                <th style="width: 8%">التاريخ</th>
+                                <th style="width: 13%;">الوقت</th>
+                                <th style="width: 8%;">السعر</th>
+                               
+                                <th style="width: 8%;">عدد الاصناف</th>
+                              
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in data track by $index" ng-dblclick="CallEditPage(item)">
+                                <td> {{item.ID}} </td>
+                                <td> {{item.Mowrid_Name}} </td>
+                                <td>{{item._Date_Invoice | date:'dd/MM/yyyy'}} </td>
+                                <td>{{item._Date_Invoice | date:'hh:mm a'}} </td>
+                                <td> {{item.Price}} </td>
+                                <td> {{item.Total_Sadad}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: center;" ng-show="TableLoading">
+                        <img src="~/assets/layouts/img/Preloader_2.gif" />
+                        <img src="~/assets/layouts/img/Preloader_2.gif" />
+                    </div>
+                    <div ng-show="EndSearch" style="text-align: center; color:red;"> عفوا لا توجد بيانات آخري </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Related{
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="page-title">الأدوات</h4>
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption" style="font-size:14px;">
+                        روابط ذات صلة
+                    </div>
+                </div>
+                <div>
+                    <div class="portlet-body">
+                        <a href="/Search/Invoice_Mowarid"><i class="fa fa-angle-left"></i> الإستعلام عن عملية شراء</a>
+                    </div>
+                    <div class="portlet-body">
+                        <a href="/Search/Moshtary"><i class="fa fa-angle-left"></i> الإستعلام عن مشترى</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+@section OmarRezkAngularFiles{
+    <link href="~/assets/layouts/ZebraDatepicker/style/bootstrap-theme.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/assets/layouts/ZebraDatepicker/style/shCoreDefault.min.css" />
+    <link href="~/assets/layouts/ZebraDatepicker/style/css/default/zebra_datepicker.min.css" rel="stylesheet" />
+    <link href="~/assets/layouts/ZebraDatepicker/examples.css" rel="stylesheet" />
+
+
+    <script src="~/assets/layouts/ZebraDatepicker/style/shCore.min.js"></script>
+    <script src="~/assets/layouts/ZebraDatepicker/style/shBrushJScript.min.js"></script>
+    <script src="~/assets/layouts/ZebraDatepicker/style/shBrushXml.min.js"></script>
+    <script src="~/assets/layouts/ZebraDatepicker/style/shBrushCss.min.js"></script>
+    <script type="text/javascript">
+        SyntaxHighlighter.defaults['toolbar'] = false;
+        SyntaxHighlighter.all();
+    </script>
+
+    <script src="~/assets/layouts/ZebraDatepicker/style/zebra_datepicker.min.js"></script>
+    <script src="~/assets/layouts/ZebraDatepicker/examples.js"></script>
+
+    <script src="~/App/Main/Expire_ProductCtrl.js"></script>
+}

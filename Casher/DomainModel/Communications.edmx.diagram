@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3a4e6ef04cbd4e6fa143a377094d4c7a" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="CasherModel.COM_TREATMENT_TYPE" Width="1.5" PointX="6.375" PointY="4.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_SUBJECTS" Width="1.5" PointX="8.375" PointY="4.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_DEPARTMENTS" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CasherModel.BLADIAINFO" Width="1.5" PointX="6.375" PointY="8.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_LIST_EXPORT" Width="1.5" PointX="8.375" PointY="8.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_EMPLOYEES" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_EMPLOYEES_VIEWS" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_EMPLOYEES_AUTHENTICATION" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_TREATMENT_COPY" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_LIST_IMPORT_REFER" Width="1.5" PointX="10.375" PointY="6.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_LIST_EXPORT_REFER" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_PAYMENT_REGISTRATION" Width="1.5" PointX="12.375" PointY="6.75" />
+        <EntityTypeShape EntityType="CasherModel.COM_LIST_IMPORT" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="CasherModel.ACTIONS" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

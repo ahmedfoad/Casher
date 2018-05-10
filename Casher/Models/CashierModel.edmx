@@ -1,0 +1,2043 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_cashierModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Department_ID" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="ComputerName" Type="nvarchar(max)" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" />
+          <Property Name="InDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="ComputerName" Type="nvarchar(max)" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" />
+          <Property Name="InDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Invoice_Cancel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Moshtary_id" Type="int" />
+          <Property Name="Date_Invoice" Type="datetime" Nullable="false" />
+          <Property Name="Date_Invoice_Hijri" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Taxes" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_Sadad" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="ComputerName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice_Cancel_Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Invoice_Cancel_Id" Type="int" Nullable="false" />
+          <Property Name="Product_Id" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Taxes" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Store_id" Type="int" Nullable="false" />
+          <Property Name="Date_Poduction" Type="datetime" Nullable="false" />
+          <Property Name="Date_Poduction_Hijri" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_Expiration" Type="datetime" Nullable="false" />
+          <Property Name="Date_Expiration_Hijri" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice_Moshtary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Moshtary_id" Type="int" />
+          <Property Name="Date_Invoice" Type="datetime" Nullable="false" />
+          <Property Name="Date_Invoice_Hijri" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Taxes" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_Sadad" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="ComputerName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice_Moshtary_Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Invoice_Moshtary_Id" Type="int" Nullable="false" />
+          <Property Name="Product_Id" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Taxes" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice_Moshtary_Sadad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Invoice_Id" Type="int" Nullable="false" />
+          <Property Name="Date_Added" Type="datetime" Nullable="false" />
+          <Property Name="Money" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Sadad_Type_Id" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="ComputerName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice_Mowrid">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mowrid_id" Type="int" Nullable="false" />
+          <Property Name="Date_Invoice" Type="date" Nullable="false" />
+          <Property Name="Date_Invoice_Hijri" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total_Sadad" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="ComputerName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice_Mowrid_Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Invoice_Mowrid_Id" Type="int" Nullable="false" />
+          <Property Name="Product_Id" Type="int" Nullable="false" />
+          <Property Name="Store_id" Type="int" Nullable="false" />
+          <Property Name="Date_Poduction" Type="datetime" Nullable="false" />
+          <Property Name="Date_Poduction_Hijri" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_Expiration" Type="datetime" Nullable="false" />
+          <Property Name="Date_Expiration_Hijri" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount_ByJumla" Type="int" Nullable="false" />
+          <Property Name="Carton_Count" Type="int" Nullable="false" />
+          <Property Name="Amount_ByUnit" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Rg3_Type" Type="int" />
+          <Property Name="Rg3_Amount" Type="int" />
+          <Property Name="Rg3_Date_Poduction" Type="datetime" />
+          <Property Name="Rg3_Date_Poduction_Hijri" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rg3_Date_Expiration" Type="datetime" />
+          <Property Name="Rg3_Date_Expiration_Hijri" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rg3_Price" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Invoice_Mowrid_Sadad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Invoice_Id" Type="int" Nullable="false" />
+          <Property Name="Date_Added" Type="datetime" Nullable="false" />
+          <Property Name="Money" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Sadad_Type_Id" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="ComputerName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Moshtary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Sejil" Type="int" />
+          <Property Name="JawalNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="JawalNO2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Barcode" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="ComputerName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mowrid">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="JawalNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="JawalNO2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Barcode" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="ComputerName" Type="nvarchar(max)" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" />
+          <Property Name="InDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Barcode" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Company_Id" Type="int" Nullable="false" />
+          <Property Name="Price_Unit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Price_Jumla" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Jumla_picesCount" Type="int" Nullable="false" />
+          <Property Name="Taxes" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="ComputerName" Type="nvarchar(max)" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" />
+          <Property Name="InDate" Type="datetime" />
+          <Property Name="Carton_Barcode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Carton_ProCount" Type="int" />
+          <Property Name="Date_Expiration" Type="datetime" />
+          <Property Name="Date_Expiration_Hijri" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price_Mowrid" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Sadad_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="ComputerName" Type="nvarchar(max)" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" />
+          <Property Name="InDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="User_ID" Type="int" />
+          <Property Name="ComputerName" Type="nvarchar(max)" />
+          <Property Name="ComputerUser" Type="nvarchar(max)" />
+          <Property Name="InDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar(max)" />
+          <Property Name="ROLE" Type="int" Nullable="false" />
+          <Property Name="COMPUTERNAME" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="COMPUTERUSER" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PROGRAMUSER" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="INDATE" Type="date" Nullable="false" />
+          <Property Name="STOPEMP" Type="bit" Nullable="false" />
+          <Property Name="PROGRAMUSERID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Userid" Type="int" Nullable="false" />
+          <Property Name="Viewid" Type="int" Nullable="false" />
+          <Property Name="ActionDate" Type="datetime" Nullable="false" />
+          <Property Name="Action" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Operation" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserView">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ViewID" Type="int" Nullable="false" />
+          <Property Name="Role_Enter" Type="bit" Nullable="false" />
+          <Property Name="Role_Save" Type="bit" Nullable="false" />
+          <Property Name="Role_Edit" Type="bit" Nullable="false" />
+          <Property Name="Role_Delete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Company_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="Department_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Cancel_Moshtary">
+          <End Role="Moshtary" Type="Self.Moshtary" Multiplicity="0..1" />
+          <End Role="Invoice_Cancel" Type="Self.Invoice_Cancel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moshtary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Cancel">
+              <PropertyRef Name="Moshtary_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Cancel_Product_Invoice_Cancel">
+          <End Role="Invoice_Cancel" Type="Self.Invoice_Cancel" Multiplicity="1" />
+          <End Role="Invoice_Cancel_Product" Type="Self.Invoice_Cancel_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Cancel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Cancel_Product">
+              <PropertyRef Name="Invoice_Cancel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Cancel_Product_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Invoice_Cancel_Product" Type="Self.Invoice_Cancel_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Cancel_Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Cancel_Product_Store">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="Invoice_Cancel_Product" Type="Self.Invoice_Cancel_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Cancel_Product">
+              <PropertyRef Name="Store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Cancel_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Invoice_Cancel" Type="Self.Invoice_Cancel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Cancel">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Moshtary">
+          <End Role="Moshtary" Type="Self.Moshtary" Multiplicity="0..1" />
+          <End Role="Invoice_Moshtary" Type="Self.Invoice_Moshtary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moshtary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary">
+              <PropertyRef Name="Moshtary_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Product_Invoice_Moshtary">
+          <End Role="Invoice_Moshtary" Type="Self.Invoice_Moshtary" Multiplicity="1" />
+          <End Role="Invoice_Moshtary_Product" Type="Self.Invoice_Moshtary_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Moshtary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary_Product">
+              <PropertyRef Name="Invoice_Moshtary_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Product_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Invoice_Moshtary_Product" Type="Self.Invoice_Moshtary_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary_Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Sadad_Invoice_Moshtary">
+          <End Role="Invoice_Moshtary" Type="Self.Invoice_Moshtary" Multiplicity="1" />
+          <End Role="Invoice_Moshtary_Sadad" Type="Self.Invoice_Moshtary_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Moshtary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary_Sadad">
+              <PropertyRef Name="Invoice_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Sadad_Sadad_Type">
+          <End Role="Sadad_Type" Type="Self.Sadad_Type" Multiplicity="1" />
+          <End Role="Invoice_Moshtary_Sadad" Type="Self.Invoice_Moshtary_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sadad_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary_Sadad">
+              <PropertyRef Name="Sadad_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Sadad_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Invoice_Moshtary_Sadad" Type="Self.Invoice_Moshtary_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary_Sadad">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Invoice_Moshtary" Type="Self.Invoice_Moshtary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Mowrid">
+          <End Role="Mowrid" Type="Self.Mowrid" Multiplicity="1" />
+          <End Role="Invoice_Mowrid" Type="Self.Invoice_Mowrid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mowrid">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid">
+              <PropertyRef Name="Mowrid_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Product_Invoice_Mowrid">
+          <End Role="Invoice_Mowrid" Type="Self.Invoice_Mowrid" Multiplicity="1" />
+          <End Role="Invoice_Mowrid_Product" Type="Self.Invoice_Mowrid_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Mowrid">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Product">
+              <PropertyRef Name="Invoice_Mowrid_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Product_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Invoice_Mowrid_Product" Type="Self.Invoice_Mowrid_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Product_Store">
+          <End Role="Store" Type="Self.Store" Multiplicity="1" />
+          <End Role="Invoice_Mowrid_Product" Type="Self.Invoice_Mowrid_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Product">
+              <PropertyRef Name="Store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Sadad_Invoice_Mowrid">
+          <End Role="Invoice_Mowrid" Type="Self.Invoice_Mowrid" Multiplicity="1" />
+          <End Role="Invoice_Mowrid_Sadad" Type="Self.Invoice_Mowrid_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Mowrid">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Sadad">
+              <PropertyRef Name="Invoice_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Sadad_Sadad_Type">
+          <End Role="Sadad_Type" Type="Self.Sadad_Type" Multiplicity="1" />
+          <End Role="Invoice_Mowrid_Sadad" Type="Self.Invoice_Mowrid_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sadad_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Sadad">
+              <PropertyRef Name="Sadad_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Sadad_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Invoice_Mowrid_Sadad" Type="Self.Invoice_Mowrid_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Sadad">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Invoice_Mowrid" Type="Self.Invoice_Mowrid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moshtary_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Moshtary" Type="Self.Moshtary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Moshtary">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mowrid_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Mowrid" Type="Self.Mowrid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mowrid">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Company_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sadad_Type_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Sadad_Type" Type="Self.Sadad_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sadad_Type">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Store" Type="Self.Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAction_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserAction" Type="Self.UserAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAction">
+              <PropertyRef Name="Userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAction_View">
+          <End Role="View" Type="Self.View" Multiplicity="1" />
+          <End Role="UserAction" Type="Self.UserAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="View">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAction">
+              <PropertyRef Name="Viewid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserView_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserView" Type="Self.UserView" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserView">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserView_View">
+          <End Role="View" Type="Self.View" Multiplicity="1" />
+          <End Role="UserView" Type="Self.UserView" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="View">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserView">
+              <PropertyRef Name="ViewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_cashierModelStoreContainer">
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice_Cancel" EntityType="Self.Invoice_Cancel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice_Cancel_Product" EntityType="Self.Invoice_Cancel_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice_Moshtary" EntityType="Self.Invoice_Moshtary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice_Moshtary_Product" EntityType="Self.Invoice_Moshtary_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice_Moshtary_Sadad" EntityType="Self.Invoice_Moshtary_Sadad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice_Mowrid" EntityType="Self.Invoice_Mowrid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice_Mowrid_Product" EntityType="Self.Invoice_Mowrid_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice_Mowrid_Sadad" EntityType="Self.Invoice_Mowrid_Sadad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moshtary" EntityType="Self.Moshtary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mowrid" EntityType="Self.Mowrid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sadad_Type" EntityType="Self.Sadad_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAction" EntityType="Self.UserAction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserView" EntityType="Self.UserView" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View" EntityType="Self.View" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Company_Department" Association="Self.FK_Company_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_User" Association="Self.FK_Company_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_User" Association="Self.FK_Department_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Cancel_Moshtary" Association="Self.FK_Invoice_Cancel_Moshtary">
+            <End Role="Moshtary" EntitySet="Moshtary" />
+            <End Role="Invoice_Cancel" EntitySet="Invoice_Cancel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Cancel_Product_Invoice_Cancel" Association="Self.FK_Invoice_Cancel_Product_Invoice_Cancel">
+            <End Role="Invoice_Cancel" EntitySet="Invoice_Cancel" />
+            <End Role="Invoice_Cancel_Product" EntitySet="Invoice_Cancel_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Cancel_Product_Product" Association="Self.FK_Invoice_Cancel_Product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Invoice_Cancel_Product" EntitySet="Invoice_Cancel_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Cancel_Product_Store" Association="Self.FK_Invoice_Cancel_Product_Store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Invoice_Cancel_Product" EntitySet="Invoice_Cancel_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Cancel_User" Association="Self.FK_Invoice_Cancel_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Invoice_Cancel" EntitySet="Invoice_Cancel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Moshtary" Association="Self.FK_Invoice_Moshtary_Moshtary">
+            <End Role="Moshtary" EntitySet="Moshtary" />
+            <End Role="Invoice_Moshtary" EntitySet="Invoice_Moshtary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Product_Invoice_Moshtary" Association="Self.FK_Invoice_Moshtary_Product_Invoice_Moshtary">
+            <End Role="Invoice_Moshtary" EntitySet="Invoice_Moshtary" />
+            <End Role="Invoice_Moshtary_Product" EntitySet="Invoice_Moshtary_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Product_Product" Association="Self.FK_Invoice_Moshtary_Product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Invoice_Moshtary_Product" EntitySet="Invoice_Moshtary_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Sadad_Invoice_Moshtary" Association="Self.FK_Invoice_Moshtary_Sadad_Invoice_Moshtary">
+            <End Role="Invoice_Moshtary" EntitySet="Invoice_Moshtary" />
+            <End Role="Invoice_Moshtary_Sadad" EntitySet="Invoice_Moshtary_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Sadad_Sadad_Type" Association="Self.FK_Invoice_Moshtary_Sadad_Sadad_Type">
+            <End Role="Sadad_Type" EntitySet="Sadad_Type" />
+            <End Role="Invoice_Moshtary_Sadad" EntitySet="Invoice_Moshtary_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Sadad_User" Association="Self.FK_Invoice_Moshtary_Sadad_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Invoice_Moshtary_Sadad" EntitySet="Invoice_Moshtary_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_User" Association="Self.FK_Invoice_Moshtary_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Invoice_Moshtary" EntitySet="Invoice_Moshtary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Mowrid" Association="Self.FK_Invoice_Mowrid_Mowrid">
+            <End Role="Mowrid" EntitySet="Mowrid" />
+            <End Role="Invoice_Mowrid" EntitySet="Invoice_Mowrid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Product_Invoice_Mowrid" Association="Self.FK_Invoice_Mowrid_Product_Invoice_Mowrid">
+            <End Role="Invoice_Mowrid" EntitySet="Invoice_Mowrid" />
+            <End Role="Invoice_Mowrid_Product" EntitySet="Invoice_Mowrid_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Product_Product" Association="Self.FK_Invoice_Mowrid_Product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Invoice_Mowrid_Product" EntitySet="Invoice_Mowrid_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Product_Store" Association="Self.FK_Invoice_Mowrid_Product_Store">
+            <End Role="Store" EntitySet="Store" />
+            <End Role="Invoice_Mowrid_Product" EntitySet="Invoice_Mowrid_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Sadad_Invoice_Mowrid" Association="Self.FK_Invoice_Mowrid_Sadad_Invoice_Mowrid">
+            <End Role="Invoice_Mowrid" EntitySet="Invoice_Mowrid" />
+            <End Role="Invoice_Mowrid_Sadad" EntitySet="Invoice_Mowrid_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Sadad_Sadad_Type" Association="Self.FK_Invoice_Mowrid_Sadad_Sadad_Type">
+            <End Role="Sadad_Type" EntitySet="Sadad_Type" />
+            <End Role="Invoice_Mowrid_Sadad" EntitySet="Invoice_Mowrid_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Sadad_User" Association="Self.FK_Invoice_Mowrid_Sadad_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Invoice_Mowrid_Sadad" EntitySet="Invoice_Mowrid_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_User" Association="Self.FK_Invoice_Mowrid_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Invoice_Mowrid" EntitySet="Invoice_Mowrid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moshtary_User" Association="Self.FK_Moshtary_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Moshtary" EntitySet="Moshtary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mowrid_User" Association="Self.FK_Mowrid_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Mowrid" EntitySet="Mowrid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Company" Association="Self.FK_Product_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_User" Association="Self.FK_Product_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sadad_Type_User" Association="Self.FK_Sadad_Type_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Sadad_Type" EntitySet="Sadad_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_User" Association="Self.FK_Store_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Store" EntitySet="Store" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAction_User" Association="Self.FK_UserAction_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserAction" EntitySet="UserAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAction_View" Association="Self.FK_UserAction_View">
+            <End Role="View" EntitySet="View" />
+            <End Role="UserAction" EntitySet="UserAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserView_User" Association="Self.FK_UserView_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserView" EntitySet="UserView" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserView_View" Association="Self.FK_UserView_View">
+            <End Role="View" EntitySet="View" />
+            <End Role="UserView" EntitySet="UserView" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_cashierModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_cashierEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Companies" EntityType="DB_cashierModel.Company" />
+          <EntitySet Name="Departments" EntityType="DB_cashierModel.Department" />
+          <EntitySet Name="Invoice_Cancel" EntityType="DB_cashierModel.Invoice_Cancel" />
+          <EntitySet Name="Invoice_Cancel_Product" EntityType="DB_cashierModel.Invoice_Cancel_Product" />
+          <EntitySet Name="Invoice_Moshtary" EntityType="DB_cashierModel.Invoice_Moshtary" />
+          <EntitySet Name="Invoice_Moshtary_Product" EntityType="DB_cashierModel.Invoice_Moshtary_Product" />
+          <EntitySet Name="Invoice_Moshtary_Sadad" EntityType="DB_cashierModel.Invoice_Moshtary_Sadad" />
+          <EntitySet Name="Invoice_Mowrid" EntityType="DB_cashierModel.Invoice_Mowrid" />
+          <EntitySet Name="Invoice_Mowrid_Product" EntityType="DB_cashierModel.Invoice_Mowrid_Product" />
+          <EntitySet Name="Invoice_Mowrid_Sadad" EntityType="DB_cashierModel.Invoice_Mowrid_Sadad" />
+          <EntitySet Name="Moshtaries" EntityType="DB_cashierModel.Moshtary" />
+          <EntitySet Name="Mowrids" EntityType="DB_cashierModel.Mowrid" />
+          <EntitySet Name="Products" EntityType="DB_cashierModel.Product" />
+          <EntitySet Name="Sadad_Type" EntityType="DB_cashierModel.Sadad_Type" />
+          <EntitySet Name="Stores" EntityType="DB_cashierModel.Store" />
+          <EntitySet Name="Users" EntityType="DB_cashierModel.User" />
+          <EntitySet Name="UserActions" EntityType="DB_cashierModel.UserAction" />
+          <EntitySet Name="UserViews" EntityType="DB_cashierModel.UserView" />
+          <EntitySet Name="Views" EntityType="DB_cashierModel.View" />
+          <AssociationSet Name="FK_Company_Department" Association="DB_cashierModel.FK_Company_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_User" Association="DB_cashierModel.FK_Company_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Company" Association="DB_cashierModel.FK_Product_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_User" Association="DB_cashierModel.FK_Department_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Department" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Cancel_Moshtary" Association="DB_cashierModel.FK_Invoice_Cancel_Moshtary">
+            <End Role="Moshtary" EntitySet="Moshtaries" />
+            <End Role="Invoice_Cancel" EntitySet="Invoice_Cancel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Cancel_Product_Invoice_Cancel" Association="DB_cashierModel.FK_Invoice_Cancel_Product_Invoice_Cancel">
+            <End Role="Invoice_Cancel" EntitySet="Invoice_Cancel" />
+            <End Role="Invoice_Cancel_Product" EntitySet="Invoice_Cancel_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Cancel_User" Association="DB_cashierModel.FK_Invoice_Cancel_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Invoice_Cancel" EntitySet="Invoice_Cancel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Cancel_Product_Product" Association="DB_cashierModel.FK_Invoice_Cancel_Product_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Invoice_Cancel_Product" EntitySet="Invoice_Cancel_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Cancel_Product_Store" Association="DB_cashierModel.FK_Invoice_Cancel_Product_Store">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Invoice_Cancel_Product" EntitySet="Invoice_Cancel_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Moshtary" Association="DB_cashierModel.FK_Invoice_Moshtary_Moshtary">
+            <End Role="Moshtary" EntitySet="Moshtaries" />
+            <End Role="Invoice_Moshtary" EntitySet="Invoice_Moshtary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Product_Invoice_Moshtary" Association="DB_cashierModel.FK_Invoice_Moshtary_Product_Invoice_Moshtary">
+            <End Role="Invoice_Moshtary" EntitySet="Invoice_Moshtary" />
+            <End Role="Invoice_Moshtary_Product" EntitySet="Invoice_Moshtary_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Sadad_Invoice_Moshtary" Association="DB_cashierModel.FK_Invoice_Moshtary_Sadad_Invoice_Moshtary">
+            <End Role="Invoice_Moshtary" EntitySet="Invoice_Moshtary" />
+            <End Role="Invoice_Moshtary_Sadad" EntitySet="Invoice_Moshtary_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_User" Association="DB_cashierModel.FK_Invoice_Moshtary_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Invoice_Moshtary" EntitySet="Invoice_Moshtary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Product_Product" Association="DB_cashierModel.FK_Invoice_Moshtary_Product_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Invoice_Moshtary_Product" EntitySet="Invoice_Moshtary_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Sadad_Sadad_Type" Association="DB_cashierModel.FK_Invoice_Moshtary_Sadad_Sadad_Type">
+            <End Role="Sadad_Type" EntitySet="Sadad_Type" />
+            <End Role="Invoice_Moshtary_Sadad" EntitySet="Invoice_Moshtary_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Moshtary_Sadad_User" Association="DB_cashierModel.FK_Invoice_Moshtary_Sadad_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Invoice_Moshtary_Sadad" EntitySet="Invoice_Moshtary_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Mowrid" Association="DB_cashierModel.FK_Invoice_Mowrid_Mowrid">
+            <End Role="Mowrid" EntitySet="Mowrids" />
+            <End Role="Invoice_Mowrid" EntitySet="Invoice_Mowrid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Product_Invoice_Mowrid" Association="DB_cashierModel.FK_Invoice_Mowrid_Product_Invoice_Mowrid">
+            <End Role="Invoice_Mowrid" EntitySet="Invoice_Mowrid" />
+            <End Role="Invoice_Mowrid_Product" EntitySet="Invoice_Mowrid_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Sadad_Invoice_Mowrid" Association="DB_cashierModel.FK_Invoice_Mowrid_Sadad_Invoice_Mowrid">
+            <End Role="Invoice_Mowrid" EntitySet="Invoice_Mowrid" />
+            <End Role="Invoice_Mowrid_Sadad" EntitySet="Invoice_Mowrid_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_User" Association="DB_cashierModel.FK_Invoice_Mowrid_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Invoice_Mowrid" EntitySet="Invoice_Mowrid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Product_Product" Association="DB_cashierModel.FK_Invoice_Mowrid_Product_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Invoice_Mowrid_Product" EntitySet="Invoice_Mowrid_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Product_Store" Association="DB_cashierModel.FK_Invoice_Mowrid_Product_Store">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Invoice_Mowrid_Product" EntitySet="Invoice_Mowrid_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Sadad_Sadad_Type" Association="DB_cashierModel.FK_Invoice_Mowrid_Sadad_Sadad_Type">
+            <End Role="Sadad_Type" EntitySet="Sadad_Type" />
+            <End Role="Invoice_Mowrid_Sadad" EntitySet="Invoice_Mowrid_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Mowrid_Sadad_User" Association="DB_cashierModel.FK_Invoice_Mowrid_Sadad_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Invoice_Mowrid_Sadad" EntitySet="Invoice_Mowrid_Sadad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Moshtary_User" Association="DB_cashierModel.FK_Moshtary_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Moshtary" EntitySet="Moshtaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mowrid_User" Association="DB_cashierModel.FK_Mowrid_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Mowrid" EntitySet="Mowrids" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_User" Association="DB_cashierModel.FK_Product_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sadad_Type_User" Association="DB_cashierModel.FK_Sadad_Type_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sadad_Type" EntitySet="Sadad_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Store_User" Association="DB_cashierModel.FK_Store_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Store" EntitySet="Stores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAction_User" Association="DB_cashierModel.FK_UserAction_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserAction" EntitySet="UserActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserView_User" Association="DB_cashierModel.FK_UserView_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserView" EntitySet="UserViews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAction_View" Association="DB_cashierModel.FK_UserAction_View">
+            <End Role="View" EntitySet="Views" />
+            <End Role="UserAction" EntitySet="UserActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserView_View" Association="DB_cashierModel.FK_UserView_View">
+            <End Role="View" EntitySet="Views" />
+            <End Role="UserView" EntitySet="UserViews" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Department_ID" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="ComputerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Department" Relationship="DB_cashierModel.FK_Company_Department" FromRole="Company" ToRole="Department" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Company_User" FromRole="Company" ToRole="User" />
+          <NavigationProperty Name="Products" Relationship="DB_cashierModel.FK_Product_Company" FromRole="Company" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="ComputerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Companies" Relationship="DB_cashierModel.FK_Company_Department" FromRole="Department" ToRole="Company" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Department_User" FromRole="Department" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Invoice_Cancel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Moshtary_id" Type="Int32" />
+          <Property Name="Date_Invoice" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_Invoice_Hijri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Taxes" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Total_Sadad" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="ComputerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Moshtary" Relationship="DB_cashierModel.FK_Invoice_Cancel_Moshtary" FromRole="Invoice_Cancel" ToRole="Moshtary" />
+          <NavigationProperty Name="Invoice_Cancel_Product" Relationship="DB_cashierModel.FK_Invoice_Cancel_Product_Invoice_Cancel" FromRole="Invoice_Cancel" ToRole="Invoice_Cancel_Product" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Invoice_Cancel_User" FromRole="Invoice_Cancel" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Invoice_Cancel_Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Invoice_Cancel_Id" Type="Int32" Nullable="false" />
+          <Property Name="Product_Id" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Taxes" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Store_id" Type="Int32" Nullable="false" />
+          <Property Name="Date_Poduction" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_Poduction_Hijri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Expiration" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_Expiration_Hijri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Invoice_Cancel" Relationship="DB_cashierModel.FK_Invoice_Cancel_Product_Invoice_Cancel" FromRole="Invoice_Cancel_Product" ToRole="Invoice_Cancel" />
+          <NavigationProperty Name="Product" Relationship="DB_cashierModel.FK_Invoice_Cancel_Product_Product" FromRole="Invoice_Cancel_Product" ToRole="Product" />
+          <NavigationProperty Name="Store" Relationship="DB_cashierModel.FK_Invoice_Cancel_Product_Store" FromRole="Invoice_Cancel_Product" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Invoice_Moshtary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Moshtary_id" Type="Int32" />
+          <Property Name="Date_Invoice" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_Invoice_Hijri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Taxes" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Total_Sadad" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="ComputerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Moshtary" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Moshtary" FromRole="Invoice_Moshtary" ToRole="Moshtary" />
+          <NavigationProperty Name="Invoice_Moshtary_Product" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Product_Invoice_Moshtary" FromRole="Invoice_Moshtary" ToRole="Invoice_Moshtary_Product" />
+          <NavigationProperty Name="Invoice_Moshtary_Sadad" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Sadad_Invoice_Moshtary" FromRole="Invoice_Moshtary" ToRole="Invoice_Moshtary_Sadad" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Invoice_Moshtary_User" FromRole="Invoice_Moshtary" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Invoice_Moshtary_Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Invoice_Moshtary_Id" Type="Int32" Nullable="false" />
+          <Property Name="Product_Id" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Taxes" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Invoice_Moshtary" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Product_Invoice_Moshtary" FromRole="Invoice_Moshtary_Product" ToRole="Invoice_Moshtary" />
+          <NavigationProperty Name="Product" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Product_Product" FromRole="Invoice_Moshtary_Product" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Invoice_Moshtary_Sadad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Invoice_Id" Type="Int32" Nullable="false" />
+          <Property Name="Date_Added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Money" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Sadad_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="ComputerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Invoice_Moshtary" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Sadad_Invoice_Moshtary" FromRole="Invoice_Moshtary_Sadad" ToRole="Invoice_Moshtary" />
+          <NavigationProperty Name="Sadad_Type" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Sadad_Sadad_Type" FromRole="Invoice_Moshtary_Sadad" ToRole="Sadad_Type" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Sadad_User" FromRole="Invoice_Moshtary_Sadad" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Invoice_Mowrid">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mowrid_id" Type="Int32" Nullable="false" />
+          <Property Name="Date_Invoice" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_Invoice_Hijri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Total_Sadad" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="ComputerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Mowrid" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Mowrid" FromRole="Invoice_Mowrid" ToRole="Mowrid" />
+          <NavigationProperty Name="Invoice_Mowrid_Product" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Product_Invoice_Mowrid" FromRole="Invoice_Mowrid" ToRole="Invoice_Mowrid_Product" />
+          <NavigationProperty Name="Invoice_Mowrid_Sadad" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Sadad_Invoice_Mowrid" FromRole="Invoice_Mowrid" ToRole="Invoice_Mowrid_Sadad" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Invoice_Mowrid_User" FromRole="Invoice_Mowrid" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Invoice_Mowrid_Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Invoice_Mowrid_Id" Type="Int32" Nullable="false" />
+          <Property Name="Product_Id" Type="Int32" Nullable="false" />
+          <Property Name="Store_id" Type="Int32" Nullable="false" />
+          <Property Name="Date_Poduction" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_Poduction_Hijri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Expiration" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_Expiration_Hijri" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount_ByJumla" Type="Int32" Nullable="false" />
+          <Property Name="Carton_Count" Type="Int32" Nullable="false" />
+          <Property Name="Amount_ByUnit" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Rg3_Type" Type="Int32" />
+          <Property Name="Rg3_Amount" Type="Int32" />
+          <Property Name="Rg3_Date_Poduction" Type="DateTime" Precision="3" />
+          <Property Name="Rg3_Date_Poduction_Hijri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rg3_Date_Expiration" Type="DateTime" Precision="3" />
+          <Property Name="Rg3_Date_Expiration_Hijri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rg3_Price" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Invoice_Mowrid" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Product_Invoice_Mowrid" FromRole="Invoice_Mowrid_Product" ToRole="Invoice_Mowrid" />
+          <NavigationProperty Name="Product" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Product_Product" FromRole="Invoice_Mowrid_Product" ToRole="Product" />
+          <NavigationProperty Name="Store" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Product_Store" FromRole="Invoice_Mowrid_Product" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Invoice_Mowrid_Sadad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Invoice_Id" Type="Int32" Nullable="false" />
+          <Property Name="Date_Added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Money" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Sadad_Type_Id" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="ComputerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Invoice_Mowrid" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Sadad_Invoice_Mowrid" FromRole="Invoice_Mowrid_Sadad" ToRole="Invoice_Mowrid" />
+          <NavigationProperty Name="Sadad_Type" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Sadad_Sadad_Type" FromRole="Invoice_Mowrid_Sadad" ToRole="Sadad_Type" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Sadad_User" FromRole="Invoice_Mowrid_Sadad" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Moshtary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sejil" Type="Int32" />
+          <Property Name="JawalNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JawalNO2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Barcode" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="ComputerName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Invoice_Cancel" Relationship="DB_cashierModel.FK_Invoice_Cancel_Moshtary" FromRole="Moshtary" ToRole="Invoice_Cancel" />
+          <NavigationProperty Name="Invoice_Moshtary" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Moshtary" FromRole="Moshtary" ToRole="Invoice_Moshtary" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Moshtary_User" FromRole="Moshtary" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Mowrid">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JawalNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JawalNO2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Barcode" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="ComputerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Invoice_Mowrid" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Mowrid" FromRole="Mowrid" ToRole="Invoice_Mowrid" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Mowrid_User" FromRole="Mowrid" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Barcode" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Company_Id" Type="Int32" Nullable="false" />
+          <Property Name="Price_Unit" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Price_Jumla" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Jumla_picesCount" Type="Int32" Nullable="false" />
+          <Property Name="Taxes" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="ComputerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Precision="3" />
+          <Property Name="Carton_Barcode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Carton_ProCount" Type="Int32" />
+          <Property Name="Date_Expiration" Type="DateTime" Precision="3" />
+          <Property Name="Date_Expiration_Hijri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price_Mowrid" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Company" Relationship="DB_cashierModel.FK_Product_Company" FromRole="Product" ToRole="Company" />
+          <NavigationProperty Name="Invoice_Cancel_Product" Relationship="DB_cashierModel.FK_Invoice_Cancel_Product_Product" FromRole="Product" ToRole="Invoice_Cancel_Product" />
+          <NavigationProperty Name="Invoice_Moshtary_Product" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Product_Product" FromRole="Product" ToRole="Invoice_Moshtary_Product" />
+          <NavigationProperty Name="Invoice_Mowrid_Product" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Product_Product" FromRole="Product" ToRole="Invoice_Mowrid_Product" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Product_User" FromRole="Product" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Sadad_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="ComputerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Invoice_Moshtary_Sadad" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Sadad_Sadad_Type" FromRole="Sadad_Type" ToRole="Invoice_Moshtary_Sadad" />
+          <NavigationProperty Name="Invoice_Mowrid_Sadad" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Sadad_Sadad_Type" FromRole="Sadad_Type" ToRole="Invoice_Mowrid_Sadad" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Sadad_Type_User" FromRole="Sadad_Type" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID" Type="Int32" />
+          <Property Name="ComputerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Invoice_Cancel_Product" Relationship="DB_cashierModel.FK_Invoice_Cancel_Product_Store" FromRole="Store" ToRole="Invoice_Cancel_Product" />
+          <NavigationProperty Name="Invoice_Mowrid_Product" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Product_Store" FromRole="Store" ToRole="Invoice_Mowrid_Product" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_Store_User" FromRole="Store" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ROLE" Type="Int32" Nullable="false" />
+          <Property Name="COMPUTERNAME" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="COMPUTERUSER" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PROGRAMUSER" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="STOPEMP" Type="Boolean" Nullable="false" />
+          <Property Name="PROGRAMUSERID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="DB_cashierModel.FK_Company_User" FromRole="User" ToRole="Company" />
+          <NavigationProperty Name="Departments" Relationship="DB_cashierModel.FK_Department_User" FromRole="User" ToRole="Department" />
+          <NavigationProperty Name="Invoice_Cancel" Relationship="DB_cashierModel.FK_Invoice_Cancel_User" FromRole="User" ToRole="Invoice_Cancel" />
+          <NavigationProperty Name="Invoice_Moshtary" Relationship="DB_cashierModel.FK_Invoice_Moshtary_User" FromRole="User" ToRole="Invoice_Moshtary" />
+          <NavigationProperty Name="Invoice_Moshtary_Sadad" Relationship="DB_cashierModel.FK_Invoice_Moshtary_Sadad_User" FromRole="User" ToRole="Invoice_Moshtary_Sadad" />
+          <NavigationProperty Name="Invoice_Mowrid" Relationship="DB_cashierModel.FK_Invoice_Mowrid_User" FromRole="User" ToRole="Invoice_Mowrid" />
+          <NavigationProperty Name="Invoice_Mowrid_Sadad" Relationship="DB_cashierModel.FK_Invoice_Mowrid_Sadad_User" FromRole="User" ToRole="Invoice_Mowrid_Sadad" />
+          <NavigationProperty Name="Moshtaries" Relationship="DB_cashierModel.FK_Moshtary_User" FromRole="User" ToRole="Moshtary" />
+          <NavigationProperty Name="Mowrids" Relationship="DB_cashierModel.FK_Mowrid_User" FromRole="User" ToRole="Mowrid" />
+          <NavigationProperty Name="Products" Relationship="DB_cashierModel.FK_Product_User" FromRole="User" ToRole="Product" />
+          <NavigationProperty Name="Sadad_Type" Relationship="DB_cashierModel.FK_Sadad_Type_User" FromRole="User" ToRole="Sadad_Type" />
+          <NavigationProperty Name="Stores" Relationship="DB_cashierModel.FK_Store_User" FromRole="User" ToRole="Store" />
+          <NavigationProperty Name="UserActions" Relationship="DB_cashierModel.FK_UserAction_User" FromRole="User" ToRole="UserAction" />
+          <NavigationProperty Name="UserViews" Relationship="DB_cashierModel.FK_UserView_User" FromRole="User" ToRole="UserView" />
+        </EntityType>
+        <EntityType Name="UserAction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Userid" Type="Int32" Nullable="false" />
+          <Property Name="Viewid" Type="Int32" Nullable="false" />
+          <Property Name="ActionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Operation" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_UserAction_User" FromRole="UserAction" ToRole="User" />
+          <NavigationProperty Name="View" Relationship="DB_cashierModel.FK_UserAction_View" FromRole="UserAction" ToRole="View" />
+        </EntityType>
+        <EntityType Name="UserView">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ViewID" Type="Int32" Nullable="false" />
+          <Property Name="Role_Enter" Type="Boolean" Nullable="false" />
+          <Property Name="Role_Save" Type="Boolean" Nullable="false" />
+          <Property Name="Role_Edit" Type="Boolean" Nullable="false" />
+          <Property Name="Role_Delete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DB_cashierModel.FK_UserView_User" FromRole="UserView" ToRole="User" />
+          <NavigationProperty Name="View" Relationship="DB_cashierModel.FK_UserView_View" FromRole="UserView" ToRole="View" />
+        </EntityType>
+        <EntityType Name="View">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserActions" Relationship="DB_cashierModel.FK_UserAction_View" FromRole="View" ToRole="UserAction" />
+          <NavigationProperty Name="UserViews" Relationship="DB_cashierModel.FK_UserView_View" FromRole="View" ToRole="UserView" />
+        </EntityType>
+        <Association Name="FK_Company_Department">
+          <End Type="DB_cashierModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="DB_cashierModel.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="Department_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DB_cashierModel.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Company">
+          <End Type="DB_cashierModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="DB_cashierModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Company_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DB_cashierModel.Department" Role="Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Cancel_Moshtary">
+          <End Type="DB_cashierModel.Moshtary" Role="Moshtary" Multiplicity="0..1" />
+          <End Type="DB_cashierModel.Invoice_Cancel" Role="Invoice_Cancel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moshtary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Cancel">
+              <PropertyRef Name="Moshtary_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Cancel_Product_Invoice_Cancel">
+          <End Type="DB_cashierModel.Invoice_Cancel" Role="Invoice_Cancel" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Cancel_Product" Role="Invoice_Cancel_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Cancel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Cancel_Product">
+              <PropertyRef Name="Invoice_Cancel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Cancel_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Cancel" Role="Invoice_Cancel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Cancel">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Cancel_Product_Product">
+          <End Type="DB_cashierModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Cancel_Product" Role="Invoice_Cancel_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Cancel_Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Cancel_Product_Store">
+          <End Type="DB_cashierModel.Store" Role="Store" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Cancel_Product" Role="Invoice_Cancel_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Cancel_Product">
+              <PropertyRef Name="Store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Moshtary">
+          <End Type="DB_cashierModel.Moshtary" Role="Moshtary" Multiplicity="0..1" />
+          <End Type="DB_cashierModel.Invoice_Moshtary" Role="Invoice_Moshtary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Moshtary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary">
+              <PropertyRef Name="Moshtary_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Product_Invoice_Moshtary">
+          <End Type="DB_cashierModel.Invoice_Moshtary" Role="Invoice_Moshtary" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Moshtary_Product" Role="Invoice_Moshtary_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Moshtary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary_Product">
+              <PropertyRef Name="Invoice_Moshtary_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Sadad_Invoice_Moshtary">
+          <End Type="DB_cashierModel.Invoice_Moshtary" Role="Invoice_Moshtary" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Moshtary_Sadad" Role="Invoice_Moshtary_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Moshtary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary_Sadad">
+              <PropertyRef Name="Invoice_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Moshtary" Role="Invoice_Moshtary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Product_Product">
+          <End Type="DB_cashierModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Moshtary_Product" Role="Invoice_Moshtary_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary_Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Sadad_Sadad_Type">
+          <End Type="DB_cashierModel.Sadad_Type" Role="Sadad_Type" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Moshtary_Sadad" Role="Invoice_Moshtary_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sadad_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary_Sadad">
+              <PropertyRef Name="Sadad_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Moshtary_Sadad_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Moshtary_Sadad" Role="Invoice_Moshtary_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Moshtary_Sadad">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Mowrid">
+          <End Type="DB_cashierModel.Mowrid" Role="Mowrid" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Mowrid" Role="Invoice_Mowrid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mowrid">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid">
+              <PropertyRef Name="Mowrid_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Product_Invoice_Mowrid">
+          <End Type="DB_cashierModel.Invoice_Mowrid" Role="Invoice_Mowrid" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Mowrid_Product" Role="Invoice_Mowrid_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Mowrid">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Product">
+              <PropertyRef Name="Invoice_Mowrid_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Sadad_Invoice_Mowrid">
+          <End Type="DB_cashierModel.Invoice_Mowrid" Role="Invoice_Mowrid" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Mowrid_Sadad" Role="Invoice_Mowrid_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Mowrid">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Sadad">
+              <PropertyRef Name="Invoice_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Mowrid" Role="Invoice_Mowrid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Product_Product">
+          <End Type="DB_cashierModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Mowrid_Product" Role="Invoice_Mowrid_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Product">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Product_Store">
+          <End Type="DB_cashierModel.Store" Role="Store" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Mowrid_Product" Role="Invoice_Mowrid_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Product">
+              <PropertyRef Name="Store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Sadad_Sadad_Type">
+          <End Type="DB_cashierModel.Sadad_Type" Role="Sadad_Type" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Mowrid_Sadad" Role="Invoice_Mowrid_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sadad_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Sadad">
+              <PropertyRef Name="Sadad_Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Mowrid_Sadad_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="1" />
+          <End Type="DB_cashierModel.Invoice_Mowrid_Sadad" Role="Invoice_Mowrid_Sadad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice_Mowrid_Sadad">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Moshtary_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="1" />
+          <End Type="DB_cashierModel.Moshtary" Role="Moshtary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Moshtary">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mowrid_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DB_cashierModel.Mowrid" Role="Mowrid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mowrid">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DB_cashierModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sadad_Type_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DB_cashierModel.Sadad_Type" Role="Sadad_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sadad_Type">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Store_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DB_cashierModel.Store" Role="Store" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAction_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="1" />
+          <End Type="DB_cashierModel.UserAction" Role="UserAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAction">
+              <PropertyRef Name="Userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserView_User">
+          <End Type="DB_cashierModel.User" Role="User" Multiplicity="1" />
+          <End Type="DB_cashierModel.UserView" Role="UserView" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserView">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAction_View">
+          <End Type="DB_cashierModel.View" Role="View" Multiplicity="1" />
+          <End Type="DB_cashierModel.UserAction" Role="UserAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="View">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAction">
+              <PropertyRef Name="Viewid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserView_View">
+          <End Type="DB_cashierModel.View" Role="View" Multiplicity="1" />
+          <End Type="DB_cashierModel.UserView" Role="UserView" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="View">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserView">
+              <PropertyRef Name="ViewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_cashierModelStoreContainer" CdmEntityContainer="DB_cashierEntities">
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="DB_cashierModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Department_ID" ColumnName="Department_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="DB_cashierModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Cancel">
+            <EntityTypeMapping TypeName="DB_cashierModel.Invoice_Cancel">
+              <MappingFragment StoreEntitySet="Invoice_Cancel">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Total_Sadad" ColumnName="Total_Sadad" />
+                <ScalarProperty Name="Taxes" ColumnName="Taxes" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date_Invoice_Hijri" ColumnName="Date_Invoice_Hijri" />
+                <ScalarProperty Name="Date_Invoice" ColumnName="Date_Invoice" />
+                <ScalarProperty Name="Moshtary_id" ColumnName="Moshtary_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Cancel_Product">
+            <EntityTypeMapping TypeName="DB_cashierModel.Invoice_Cancel_Product">
+              <MappingFragment StoreEntitySet="Invoice_Cancel_Product">
+                <ScalarProperty Name="Date_Expiration_Hijri" ColumnName="Date_Expiration_Hijri" />
+                <ScalarProperty Name="Date_Expiration" ColumnName="Date_Expiration" />
+                <ScalarProperty Name="Date_Poduction_Hijri" ColumnName="Date_Poduction_Hijri" />
+                <ScalarProperty Name="Date_Poduction" ColumnName="Date_Poduction" />
+                <ScalarProperty Name="Store_id" ColumnName="Store_id" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Taxes" ColumnName="Taxes" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Invoice_Cancel_Id" ColumnName="Invoice_Cancel_Id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Moshtary">
+            <EntityTypeMapping TypeName="DB_cashierModel.Invoice_Moshtary">
+              <MappingFragment StoreEntitySet="Invoice_Moshtary">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Total_Sadad" ColumnName="Total_Sadad" />
+                <ScalarProperty Name="Taxes" ColumnName="Taxes" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date_Invoice_Hijri" ColumnName="Date_Invoice_Hijri" />
+                <ScalarProperty Name="Date_Invoice" ColumnName="Date_Invoice" />
+                <ScalarProperty Name="Moshtary_id" ColumnName="Moshtary_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Moshtary_Product">
+            <EntityTypeMapping TypeName="DB_cashierModel.Invoice_Moshtary_Product">
+              <MappingFragment StoreEntitySet="Invoice_Moshtary_Product">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Taxes" ColumnName="Taxes" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Invoice_Moshtary_Id" ColumnName="Invoice_Moshtary_Id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Moshtary_Sadad">
+            <EntityTypeMapping TypeName="DB_cashierModel.Invoice_Moshtary_Sadad">
+              <MappingFragment StoreEntitySet="Invoice_Moshtary_Sadad">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Sadad_Type_Id" ColumnName="Sadad_Type_Id" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="Date_Added" ColumnName="Date_Added" />
+                <ScalarProperty Name="Invoice_Id" ColumnName="Invoice_Id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Mowrid">
+            <EntityTypeMapping TypeName="DB_cashierModel.Invoice_Mowrid">
+              <MappingFragment StoreEntitySet="Invoice_Mowrid">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Total_Sadad" ColumnName="Total_Sadad" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date_Invoice_Hijri" ColumnName="Date_Invoice_Hijri" />
+                <ScalarProperty Name="Date_Invoice" ColumnName="Date_Invoice" />
+                <ScalarProperty Name="Mowrid_id" ColumnName="Mowrid_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Mowrid_Product">
+            <EntityTypeMapping TypeName="DB_cashierModel.Invoice_Mowrid_Product">
+              <MappingFragment StoreEntitySet="Invoice_Mowrid_Product">
+                <ScalarProperty Name="Rg3_Price" ColumnName="Rg3_Price" />
+                <ScalarProperty Name="Rg3_Date_Expiration_Hijri" ColumnName="Rg3_Date_Expiration_Hijri" />
+                <ScalarProperty Name="Rg3_Date_Expiration" ColumnName="Rg3_Date_Expiration" />
+                <ScalarProperty Name="Rg3_Date_Poduction_Hijri" ColumnName="Rg3_Date_Poduction_Hijri" />
+                <ScalarProperty Name="Rg3_Date_Poduction" ColumnName="Rg3_Date_Poduction" />
+                <ScalarProperty Name="Rg3_Amount" ColumnName="Rg3_Amount" />
+                <ScalarProperty Name="Rg3_Type" ColumnName="Rg3_Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount_ByUnit" ColumnName="Amount_ByUnit" />
+                <ScalarProperty Name="Carton_Count" ColumnName="Carton_Count" />
+                <ScalarProperty Name="Amount_ByJumla" ColumnName="Amount_ByJumla" />
+                <ScalarProperty Name="Date_Expiration_Hijri" ColumnName="Date_Expiration_Hijri" />
+                <ScalarProperty Name="Date_Expiration" ColumnName="Date_Expiration" />
+                <ScalarProperty Name="Date_Poduction_Hijri" ColumnName="Date_Poduction_Hijri" />
+                <ScalarProperty Name="Date_Poduction" ColumnName="Date_Poduction" />
+                <ScalarProperty Name="Store_id" ColumnName="Store_id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Invoice_Mowrid_Id" ColumnName="Invoice_Mowrid_Id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Mowrid_Sadad">
+            <EntityTypeMapping TypeName="DB_cashierModel.Invoice_Mowrid_Sadad">
+              <MappingFragment StoreEntitySet="Invoice_Mowrid_Sadad">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Sadad_Type_Id" ColumnName="Sadad_Type_Id" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="Date_Added" ColumnName="Date_Added" />
+                <ScalarProperty Name="Invoice_Id" ColumnName="Invoice_Id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moshtaries">
+            <EntityTypeMapping TypeName="DB_cashierModel.Moshtary">
+              <MappingFragment StoreEntitySet="Moshtary">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="JawalNO2" ColumnName="JawalNO2" />
+                <ScalarProperty Name="JawalNO" ColumnName="JawalNO" />
+                <ScalarProperty Name="Sejil" ColumnName="Sejil" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mowrids">
+            <EntityTypeMapping TypeName="DB_cashierModel.Mowrid">
+              <MappingFragment StoreEntitySet="Mowrid">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="JawalNO2" ColumnName="JawalNO2" />
+                <ScalarProperty Name="JawalNO" ColumnName="JawalNO" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DB_cashierModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Price_Mowrid" ColumnName="Price_Mowrid" />
+                <ScalarProperty Name="Date_Expiration_Hijri" ColumnName="Date_Expiration_Hijri" />
+                <ScalarProperty Name="Date_Expiration" ColumnName="Date_Expiration" />
+                <ScalarProperty Name="Carton_ProCount" ColumnName="Carton_ProCount" />
+                <ScalarProperty Name="Carton_Barcode" ColumnName="Carton_Barcode" />
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Taxes" ColumnName="Taxes" />
+                <ScalarProperty Name="Jumla_picesCount" ColumnName="Jumla_picesCount" />
+                <ScalarProperty Name="Price_Jumla" ColumnName="Price_Jumla" />
+                <ScalarProperty Name="Price_Unit" ColumnName="Price_Unit" />
+                <ScalarProperty Name="Company_Id" ColumnName="Company_Id" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sadad_Type">
+            <EntityTypeMapping TypeName="DB_cashierModel.Sadad_Type">
+              <MappingFragment StoreEntitySet="Sadad_Type">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="DB_cashierModel.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="InDate" ColumnName="InDate" />
+                <ScalarProperty Name="ComputerUser" ColumnName="ComputerUser" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DB_cashierModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="PROGRAMUSERID" ColumnName="PROGRAMUSERID" />
+                <ScalarProperty Name="STOPEMP" ColumnName="STOPEMP" />
+                <ScalarProperty Name="INDATE" ColumnName="INDATE" />
+                <ScalarProperty Name="PROGRAMUSER" ColumnName="PROGRAMUSER" />
+                <ScalarProperty Name="COMPUTERUSER" ColumnName="COMPUTERUSER" />
+                <ScalarProperty Name="COMPUTERNAME" ColumnName="COMPUTERNAME" />
+                <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserActions">
+            <EntityTypeMapping TypeName="DB_cashierModel.UserAction">
+              <MappingFragment StoreEntitySet="UserAction">
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="Viewid" ColumnName="Viewid" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserViews">
+            <EntityTypeMapping TypeName="DB_cashierModel.UserView">
+              <MappingFragment StoreEntitySet="UserView">
+                <ScalarProperty Name="Role_Delete" ColumnName="Role_Delete" />
+                <ScalarProperty Name="Role_Edit" ColumnName="Role_Edit" />
+                <ScalarProperty Name="Role_Save" ColumnName="Role_Save" />
+                <ScalarProperty Name="Role_Enter" ColumnName="Role_Enter" />
+                <ScalarProperty Name="ViewID" ColumnName="ViewID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Views">
+            <EntityTypeMapping TypeName="DB_cashierModel.View">
+              <MappingFragment StoreEntitySet="View">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

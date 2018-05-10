@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "تقرير جرد الاصناف";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-title">المعاملات الصادرة</h4>
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="/Home">
+                    الصفحة الرئيسية
+                </a>
+                <i class="fa fa-angle-left"></i>
+            </li>
+            <li>
+                <a href="#" id="pageTitle">
+                    تقرير جرد الاصناف
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row" ng-controller="AllProductsCtrl">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    خيارات البحث
+                </div>
+                <div class="actions">
+                    <a href="" class="btn btn-default" ng-click="emptyInputs()">
+                        <i class="fa fa-pencil"></i> إخلاء خانات البحث
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form role='form'>
+                    <div class='row form-body'>
+
+
+                        <div class='col-md-4 form-group'>
+                            <label>اسم الصنف </label>
+                            <div class='form-group'>
+                                <input type='number' id="NO" class='form-control' placeholder='من رقم' ng-model="ListExport.FromNO">
+                            </div>
+                        </div>
+                        <div class='col-md-4 form-group'>
+                            <label>اسم الشركة </label>
+                            <div class='form-group'>
+                                <input type='number' id="NO" class='form-control' placeholder='إلي رقم' ng-model="ListExport.ToNO">
+                            </div>
+                        </div>
+                        <div class='col-md-4 form-group'>
+                            <label>القسم </label>
+                            <div class='form-group'>
+                                <input type='number' id="NO" class='form-control' placeholder='إلي رقم' ng-model="ListExport.ToNO">
+                            </div>
+                        </div>
+                        <div class="row form-actions" style="text-align:center">
+                            <button type="submit" class="btn green" ng-click="SearchButton(ListExport)">عرض</button>
+                            <button type="submit" class="btn purple" ng-click="PrintButton(ListExport)">طباعة</button>
+                            <a class='btn default btn-sm' style="display:none;" id='OpenReport' href='#'> فتح </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="portlet-title">
+                <div class="caption">
+                    نتائج البحث
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;"> اسم الصنف </th>
+                                <th style="width: 8%">اسم الشركة</th>
+                                <th style="width: 13%;">القسم</th>
+                                <th style="width: 8%;">رقم الباركود</th>
+                                <th style="width: 10%;">السعر</th>
+                                <th style="width: 29%;">الضريبة</th>
+                                <th style="width: 8%;">إجمالى السعر</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in data track by $index" ng-dblclick="CallEditPage(item)">
+                                <td> {{item.Name}} </td>
+                                <td>{{item.Company_Name}} </td>
+                                <td> {{item.Department_Name}} </td>
+                                <td> {{item.Barcode}} </td>
+                                <td>{{item.Price_Unit}} </td>
+                                <td> {{item.Taxes}} </td>
+                                <td>{{item.TotalPrice}} </td>
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: center;" ng-show="TableLoading">
+                        <img src="~/assets/layouts/img/Preloader_2.gif" />
+                        <img src="~/assets/layouts/img/Preloader_2.gif" />
+                    </div>
+                    <div ng-show="EndSearch" style="text-align: center; color:red;"> عفوا لا توجد بيانات آخري </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Related{
+    <div class="row">
+    <div class="col-md-12">
+        <h4 class="page-title">الأدوات</h4>
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption" style="font-size:14px;">
+                    روابط ذات صلة
+                </div>
+            </div>
+            <div>
+                <div class="portlet-body">
+                    <a href="/Search/Invoice_Mowarid"><i class="fa fa-angle-left"></i> الإستعلام عن عملية شراء</a>
+                </div>
+                <div class="portlet-body">
+                    <a href="/Search/Moshtary"><i class="fa fa-angle-left"></i> الإستعلام عن مشترى</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+}
+@section OmarRezkAngularFiles{
+    <script src="~/App/Reports/AllProductsCtrl.js"></script>
+}
+

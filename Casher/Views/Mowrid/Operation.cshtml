@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "تسجيل مورد";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="icon-settings"></i>
+                <a href="#">
+                    الاعدادات
+                </a>
+                <i class="fa fa-angle-left"></i>
+            </li>
+            <li>
+                <a href="#">
+                    تسجيل مورد
+                </a>
+            </li>
+
+        </ul>
+        
+    </div>
+</div>
+<div class="row" ng-controller="MowaridCtrl">
+    <div class="col-md-12" ng-show="AlertParameter">
+        <div class="m-heading-1 border-green m-bordered">
+            <span style="color:red"> {{ErrorName}} </span>
+            <button type="button" style="margin-top: 6px;" class="close" ng-click="ReomveAlert()"></button>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="Payment">
+        <div id="Paymenttxt" class="m-heading-1 border-green m-bordered">
+            {{Paymenttxt}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    البيانات الأساسية
+                </div>
+                 
+                <div class="tools">
+                 
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form role='form' name="MowridForm">
+                    <div class='row form-body'>
+                        <div class='col-md-2 form-group'>
+                            <label>مسلسل</label>
+                            <div class='form-group'>
+                                <input type='number' class='form-control' readonly placeholder='مسلسل' ng-model="Mowrid.ID">
+                            </div>
+                        </div>
+                        <div class='col-md-6 form-group'>
+                            <label>اسم المورد</label>
+                            <div class='form-group'>
+                                <input type='text' id="Name" class='form-control' placeholder='اسم المورد' ng-model="Mowrid.Name" value="{{Mowrid.Name}}">
+                            </div>
+                        </div>
+                        <div class='col-md-2 form-group' ng-class="{ 'has-error': MowridForm.JawalNO.$invalid }">
+                            <label id="lblJawalNO">رقم الجوال</label>
+                            <span id="spJawalNO" ng-show="MowridForm.JawalNO.$error.pattern" style="color: red; float: left; font-size: 10px; margin-left: 10px;">رقم الجوال غير صحيح</span>
+                            <div class='form-group'>
+                                <input type='text' id="JawalNO" class='form-control' ng-pattern="/^05[0-9]{8}$/" name="JawalNO" placeholder='رقم الجوال' ng-model="Mowrid.JawalNO" value="{{Mowrid.JawalNO}}">
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-6 form-group'>
+                            <label>العنوان</label>
+                            <div class='form-group'>
+                                <input type='text' id="Address" class='form-control'  placeholder='العنوان' ng-model="Mowrid.Address" value="{{Mowrid.Address}}">
+                            </div>
+                        </div>
+
+                       
+                    </div>
+                    <div class='row form-actions' style='text-align:center'>
+                        <button type='submit' class='btn green' ng-hide="SaveBtn" ng-click="SaveMowrid(Mowrid)">حفظ</button>
+                        <button type='submit' class='btn green' ng-hide="EditBtn" ng-click="SaveMowrid(Mowrid)">تعديل</button>
+                        <button type='submit' class='btn red' ng-hide="DeleteBtn" ng-click="DeleteMowrid()">حذف</button>
+                        <a href="/Home" type='submit' class='btn purple'>إلغاء</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="dataEntire">
+        <div class="note note-info dataEntire">
+            <h4 class="profile-desc-title">بيانات الإدخال</h4>
+            <div class="col-md-5 profile-desc-link">
+                <i class="fa fa-user"></i>
+                <span style="color: #5b9bd1">المستخدم</span>
+                <br />
+                <span style=" margin-right: 30px;">{{Mowrid.ProgramUser}}</span>
+            </div>
+            <div class="col-md-2 profile-desc-link">
+                <i class="fa fa-desktop"></i>
+                <span style="color: #5b9bd1">الكمبيوتر</span>
+                <br />
+                <span style=" margin-right: 30px;">{{Mowrid.ComputerName}}</span>
+            </div>
+            <div class="col-md-2 profile-desc-link">
+                <i class="fa fa-sitemap"></i>
+                <span style="color: #5b9bd1">مستخدم الشبكة</span>
+                <br />
+                <span style=" margin-right: 30px;">{{Mowrid.ComputerUser}}</span>
+            </div>
+            <div class="col-md-3 profile-desc-link">
+                <i class="fa fa-calendar"></i>
+                <span style="color: #5b9bd1">التاريخ</span>
+                <br />
+                <span style=" margin-right: 30px;"> {{Mowrid.InDate}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+@section Related{
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="page-title">الأدوات</h4>
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption" style="font-size:14px;">
+                        روابط ذات صلة
+                    </div>
+                </div>
+                <div>
+                    <div class="portlet-body">
+                        <a href="/Users/Operation"><i class="fa fa-angle-left"></i>  إضافة مستخدم جديد</a>
+                    </div>
+                    <div class="portlet-body">
+                        <a href="/Users/Search"><i class="fa fa-angle-left"></i> الإستعلام عن المستخدمين</a>
+                    </div>
+                    <div id="EditElements">
+                        <div class="portlet-body">
+                            <a href="/Store/Index" id="PrintPayment"><i class="fa fa-angle-left"></i> المخزن</a>
+                        </div>
+                        <div class="portlet-body">
+                            <a href="/Departments/Index" id="PrintRefer"><i class="fa fa-angle-left"></i> القسم</a>
+                        </div>
+                        <div class="portlet-body">
+                            <a href="/Company/Index" id="Payment"><i class="fa fa-angle-left"></i> اسم الشركة </a>
+                        </div>
+                        <div class="portlet-body">
+                            <a href="/Product/Operation" id="TreamentCopy"><i class="fa fa-angle-left"></i> الصنف</a>
+                        </div>
+                        <div class="/Sadad_Type/Index">
+                            <a href="#" id="PrintTicket"><i class="fa fa-angle-left"></i> طريقة السداد</a>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+}
+
+@section OmarRezkAngularFiles{
+    <script src="~/App/Main/MowaridCtrl.js"></script>
+ 
+
+}
+
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="29f31ccdeaf64eb4b06f6e3c43984a01" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="DB_cashierModel.Company" Width="1.5" PointX="5.25" PointY="44.625" />
+        <EntityTypeShape EntityType="DB_cashierModel.Department" Width="1.5" PointX="3" PointY="56.875" />
+        <EntityTypeShape EntityType="DB_cashierModel.Invoice_Cancel" Width="1.5" PointX="5.25" PointY="27.875" />
+        <EntityTypeShape EntityType="DB_cashierModel.Invoice_Cancel_Product" Width="1.5" PointX="10.75" PointY="28.25" />
+        <EntityTypeShape EntityType="DB_cashierModel.Invoice_Moshtary" Width="1.5" PointX="8.25" PointY="27.875" />
+        <EntityTypeShape EntityType="DB_cashierModel.Invoice_Moshtary_Product" Width="1.5" PointX="10.5" PointY="33.375" />
+        <EntityTypeShape EntityType="DB_cashierModel.Invoice_Moshtary_Sadad" Width="1.5" PointX="10.5" PointY="43.125" />
+        <EntityTypeShape EntityType="DB_cashierModel.Invoice_Mowrid" Width="1.5" PointX="5.25" PointY="39.625" />
+        <EntityTypeShape EntityType="DB_cashierModel.Invoice_Mowrid_Product" Width="1.5" PointX="12.75" PointY="33.375" />
+        <EntityTypeShape EntityType="DB_cashierModel.Invoice_Mowrid_Sadad" Width="1.5" PointX="7.5" PointY="43.125" />
+        <EntityTypeShape EntityType="DB_cashierModel.Moshtary" Width="1.5" PointX="3" PointY="28.625" />
+        <EntityTypeShape EntityType="DB_cashierModel.Mowrid" Width="1.5" PointX="3" PointY="52.75" />
+        <EntityTypeShape EntityType="DB_cashierModel.Product" Width="1.5" PointX="7.5" PointY="34.5" />
+        <EntityTypeShape EntityType="DB_cashierModel.Sadad_Type" Width="1.5" PointX="3" PointY="60.125" />
+        <EntityTypeShape EntityType="DB_cashierModel.Store" Width="1.5" PointX="3" PointY="20.75" />
+        <EntityTypeShape EntityType="DB_cashierModel.User" Width="1.5" PointX="0.75" PointY="26.75" />
+        <EntityTypeShape EntityType="DB_cashierModel.UserAction" Width="1.5" PointX="6" PointY="24.5" />
+        <EntityTypeShape EntityType="DB_cashierModel.UserView" Width="1.5" PointX="3" PointY="24.375" />
+        <EntityTypeShape EntityType="DB_cashierModel.View" Width="1.5" PointX="3.75" PointY="17.875" />
+        <AssociationConnector Association="DB_cashierModel.FK_Company_Department" />
+        <AssociationConnector Association="DB_cashierModel.FK_Company_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Product_Company" />
+        <AssociationConnector Association="DB_cashierModel.FK_Department_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Cancel_Moshtary" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Cancel_Product_Invoice_Cancel" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Cancel_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Cancel_Product_Product" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Cancel_Product_Store" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Moshtary_Moshtary" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Moshtary_Product_Invoice_Moshtary" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Moshtary_Sadad_Invoice_Moshtary" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Moshtary_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Moshtary_Product_Product" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Moshtary_Sadad_Sadad_Type" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Moshtary_Sadad_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Mowrid_Mowrid" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Mowrid_Product_Invoice_Mowrid" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Mowrid_Sadad_Invoice_Mowrid" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Mowrid_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Mowrid_Product_Product" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Mowrid_Product_Store" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Mowrid_Sadad_Sadad_Type" />
+        <AssociationConnector Association="DB_cashierModel.FK_Invoice_Mowrid_Sadad_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Moshtary_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Mowrid_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Product_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Sadad_Type_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_Store_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_UserAction_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_UserView_User" />
+        <AssociationConnector Association="DB_cashierModel.FK_UserAction_View" />
+        <AssociationConnector Association="DB_cashierModel.FK_UserView_View" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

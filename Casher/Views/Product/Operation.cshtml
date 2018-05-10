@@ -1,0 +1,239 @@
+﻿@{
+    ViewBag.Title = "الصنف";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="icon-settings"></i>
+                <a href="#">
+                    الاعدادات
+                </a>
+                <i class="fa fa-angle-left"></i>
+            </li>
+            <li>
+                <a href="#">
+                    الصنف
+                </a>
+            </li>
+
+        </ul>
+        
+    </div>
+</div>
+<div class="row" ng-controller="ProductCtrl">
+    <div class="col-md-12" ng-show="AlertParameter">
+        <div class="m-heading-1 border-green m-bordered">
+            <span style="color:red"> {{ErrorName}} </span>
+            <button type="button" style="margin-top: 6px;" class="close" ng-click="ReomveAlert()"></button>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="Payment">
+        <div id="Paymenttxt" class="m-heading-1 border-green m-bordered">
+            {{Paymenttxt}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    البيانات الأساسية
+                </div>
+                <div class="actions" id="EditElements2">
+                    <a href="javascript:;" class="btn red" id="PrintBarCode">
+                        <i class="fa fa-print"></i>  طباعة الباركود
+                    </a>
+                  
+                </div>
+                <div class="tools">
+                 
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form role='form' name="FormData">
+                    <div class='row form-body'>
+                        <div class='col-md-2 form-group'>
+                            <label>مسلسل</label>
+                            <div class='form-group'>
+                                <input type='number' class='form-control' readonly placeholder='مسلسل' ng-model="Product.ID">
+                            </div>
+                        </div>
+                        <div class='col-md-6 form-group'>
+                            <label>اسم الصنف</label>
+                            <div class='form-group'>
+                                <input type='text' id="Name" class='form-control' placeholder='اسم الصنف' ng-model="Product.Name" value="{{Product.Name}}">
+                            </div>
+                        </div>
+                        <div class='col-md-4 form-group'>
+                            <label id="lblBarcode">اسم الشركة</label>
+                            <div class='form-group fixeddiv'>
+                                <input type='hidden' id="Company_Id" ng-model="Product.Company_Id">
+                                <input type='text' id="Company_Name" ng-click="loadCompanies()" placeholder='اسم الشركة' class='form-control' readonly>
+                            </div>
+                        </div>
+                       
+                        <div class='col-md-4 form-group'>
+                            <label id="lblBarcode">رقم الباركود</label>
+                            <div class='form-group fixeddiv'>
+                                <input type='text' id="Barcode2" class='form-control' ng-pattern="/^05[0-9]{8}$/" name="Barcode2" placeholder='رقم الباركود' ng-model="Product.Barcode" value="{{Product.Barcode}}">
+                                <button type='submit' class='btn blue' ng-hide="SaveBtn" ng-click="GetBarcode()">رقم تلقائى</button>
+                            </div>
+                        </div>
+                     
+                        <div class='col-md-4 form-group' ng-class="{ 'has-error': FormData.Price_Unit.$invalid }">
+                            <label id="lblPrice_Unit">سعر الصنف</label>
+                            <span id="spPrice_Unit" ng-show="FormData.Price_Unit.$error.pattern" style="color: red; float: left; font-size: 10px; margin-left: 10px;">السعر غير صحيح</span>
+                            <div class='form-group fixeddiv'>
+                                <input type='text' id="Price_Unit" class='form-control' ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" name="Price_Unit" placeholder='السعر' ng-model="Product.Price_Unit" value="{{Product.Price_Unit}}" >
+                                <label class="label2">ريال</label>
+                            </div>
+                        </div>
+                        <div class='col-md-4 form-group' ng-class="{ 'has-error': FormData.Price_Mowrid.$invalid }">
+                            <label id="lblPrice_Unit">سعر الشراء</label>
+                            <span id="spPrice_Unit" ng-show="FormData.Price_Mowrid.$error.pattern" style="color: red; float: left; font-size: 10px; margin-left: 10px;">السعر غير صحيح</span>
+                            <div class='form-group fixeddiv'>
+                                <input type='text' id="Price_Unit" class='form-control' ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" name="Price_Unit" placeholder='السعر' ng-model="Product.Price_Mowrid" value="{{Product.Price_Mowrid}}">
+                                <label class="label2">ريال</label>
+                            </div>
+                        </div>
+                        
+
+                        <div class='col-md-4 form-group'>
+                            <label id="lblBarcode">باركود الكارتون</label>
+                            <div class='form-group fixeddiv'>
+                                <input type='text' id="Carton_Barcode" class='form-control' ng-pattern="/^05[0-9]{8}$/" name="Carton_Barcode" placeholder='باركود الكارتون' ng-model="Product.Carton_Barcode" value="{{Product.Carton_Barcode}}">
+                                 
+                            </div>
+                        </div>
+
+                        <div class='col-md-4 form-group' ng-class="{ 'has-error': FormData.Price_Unit.$invalid }">
+                            <label id="lblPrice_Unit">العدد بالكارتون</label>
+                            <span id="spCarton_ProCount" ng-show="FormData.Carton_ProCount.$error.pattern" style="color: red; float: left; font-size: 10px; margin-left: 10px;">العدد بالكارتون</span>
+                            <div class='form-group fixeddiv'>
+                                <input type='text' id="Price_Unit" class='form-control' ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" name="Price_Unit" placeholder='السعر' ng-model="Product.Carton_ProCount" value="{{Product.Carton_ProCount}}">
+                                
+                            </div>
+                        </div>
+                        <div class='col-md-4 form-group'>
+                            <label id="lblBarcode">تاريخ الانتهاء</label>
+                            <div class='form-group fixeddiv'>
+                                <input name="Date_Expiration" ng-model="Product.Date_Expiration" type="text" datepicker class="datepickeend form-control" data-zdp_readonly_element="true">
+                            </div>
+                        </div>
+                        <div class='col-md-4 form-group'>
+                            <label>ضريبة القيمة المضافة</label>
+                            <div class='form-group fixeddiv'>
+                                <select id="Taxes" class="form-control">
+                                    <option value="" ng-selected="Product.Taxes == ''"> اختار القيمة المضافة</option>
+                                    <option value="0" ng-selected="Product.Taxes == 0">0</option>
+                                    <option value="5" ng-selected="Product.Taxes == 5">5</option>
+                                </select>
+                                <label class="label2">%</label>
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class='row form-actions' style='text-align:center'>
+                        <button type='submit' class='btn green' ng-hide="SaveBtn" ng-click="SaveProduct(Product)">حفظ</button>
+                        <button type='submit' class='btn green' ng-hide="EditBtn" ng-click="SaveProduct(Product)">تعديل</button>
+                        <button type='submit' class='btn red' ng-hide="DeleteBtn" ng-click="DeleteProduct()">حذف</button>
+                        <a href="/Home" type='submit' class='btn purple'>إلغاء</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" ng-show="dataEntire">
+        <div class="note note-info dataEntire">
+            <h4 class="profile-desc-title">بيانات الإدخال</h4>
+            <div class="col-md-5 profile-desc-link">
+                <i class="fa fa-user"></i>
+                <span style="color: #5b9bd1">المستخدم</span>
+                <br />
+                <span style=" margin-right: 30px;">{{Product.ProgramUser}}</span>
+            </div>
+            <div class="col-md-2 profile-desc-link">
+                <i class="fa fa-desktop"></i>
+                <span style="color: #5b9bd1">الكمبيوتر</span>
+                <br />
+                <span style=" margin-right: 30px;">{{Product.ComputerName}}</span>
+            </div>
+            <div class="col-md-2 profile-desc-link">
+                <i class="fa fa-sitemap"></i>
+                <span style="color: #5b9bd1">مستخدم الشبكة</span>
+                <br />
+                <span style=" margin-right: 30px;">{{Product.ComputerUser}}</span>
+            </div>
+            <div class="col-md-3 profile-desc-link">
+                <i class="fa fa-calendar"></i>
+                <span style="color: #5b9bd1">التاريخ</span>
+                <br />
+                <span style=" margin-right: 30px;"> {{Product.InDate}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+@section Related{
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="page-title">الأدوات</h4>
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption" style="font-size:14px;">
+                        روابط ذات صلة
+                    </div>
+                </div>
+                <div>
+                    <div class="portlet-body">
+                        <a href="/Product/Operation"><i class="fa fa-angle-left"></i> إضافة منتج جديد</a>
+                    </div>
+                    <div class="portlet-body">
+                        <a href="/Product/Search"><i class="fa fa-angle-left"></i>الإستعلام عن منتج</a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="Numbers" class="portlet light bordered">
+                <!-- STAT -->
+                <div class="row list-separated">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div id="BarcodNumber" class="uppercase profile-stat-title"></div>
+                        <div class="uppercase profile-stat-text"> رقم الباركود </div>
+                    </div>
+                </div>
+                <!-- END STAT -->
+            </div>
+            <div id="Barcode" class="portlet light bordered">
+                <img id="BarcodeImg" class="img-responsive pic-bordered" />
+
+            </div>
+        </div>
+    </div>
+}
+
+@section OmarRezkAngularFiles{
+
+<link href="~/assets/layouts/ZebraDatepicker/style/bootstrap-theme.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/assets/layouts/ZebraDatepicker/style/shCoreDefault.min.css" />
+<link href="~/assets/layouts/ZebraDatepicker/style/css/default/zebra_datepicker.min.css" rel="stylesheet" />
+<link href="~/assets/layouts/ZebraDatepicker/examples.css" rel="stylesheet" />
+
+
+<script src="~/assets/layouts/ZebraDatepicker/style/shCore.min.js"></script>
+<script src="~/assets/layouts/ZebraDatepicker/style/shBrushJScript.min.js"></script>
+<script src="~/assets/layouts/ZebraDatepicker/style/shBrushXml.min.js"></script>
+<script src="~/assets/layouts/ZebraDatepicker/style/shBrushCss.min.js"></script>
+<script type="text/javascript">
+        SyntaxHighlighter.defaults['toolbar'] = false;
+        SyntaxHighlighter.all();
+</script>
+
+<script src="~/assets/layouts/ZebraDatepicker/style/zebra_datepicker.min.js"></script>
+<script src="~/assets/layouts/ZebraDatepicker/examples.js"></script>
+<script src="~/App/Main/ProductCtrl.js"></script>
+
+}
+
+
